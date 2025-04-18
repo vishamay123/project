@@ -1,4 +1,22 @@
 ---
 - name: install apache on remote server
   hosts: web
-  become
+  become: yes
+  tasks:
+
+
+    - name: upade packages 
+      apt: 
+        update_cache: yes
+
+    - name: install apache2
+      apt:
+       name: apache2
+       state: present
+
+    - name: ensure that apache2
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+        
